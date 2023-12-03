@@ -2,15 +2,58 @@
 
 let canvasElem = document.getElementById('chart')
 
-/* TODO:
- * - Instantiate a new AppState
- * - Use a method on that AppState to load vote data from localStorage.
- * - Create a data object for chart.js using your AppState's allProducts array.
- * - Combine the data object with configuration information for chart.js type, colors, etc
- * - Call chart.js with the configuration and the canvasElem
- *
- */
+// Instantiate a new AppState
+let state = new AppState();
+
+// Load vote data from localStorage.
+state.loadItems();
+
+
 function renderChart() {
+  let votesArray = [];
+  let viewsArray = [];
+  let namesArray = [];
+  for(let i = 0; i < state.allProducts.length; i++){
+
+    votesArray.push(state.allProducts[i].timesClicked);
+    viewsArray.push(state.allProducts[i].timesShown);
+    namesArray.push(state.allProducts[i].name);
+  }
+  let chartObj = {
+    type: 'bar',
+    data: {
+      labels: namesArray,
+      datasets: [{
+        label: 'Votes',
+        data: votesArray,
+        backgroundColor: 'blue'
+      },
+      {
+        label: 'Views',
+        data: viewsArray,
+        backgroundColor: 'red'
+      }
+    ]
+  },
+    options: {
+
+      scales: {
+        y: {
+          ticks: {
+            color: 'black'
+          },
+          beginAtZero: true
+        },
+        x: {
+          ticks: {
+            color: 'black'
+          },
+        }
+      }
+    }
+  }
+  new Chart(canvasElem, chartObj);
+  console.log(chartObj);
 }
 
 renderChart();
