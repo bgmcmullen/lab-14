@@ -1,1 +1,105 @@
-/* TODO: Make it awesome */
+h1{
+  margin: 5px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-size: 50px;
+
+}
+
+ul{
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+}
+
+li{
+  padding-right: 80px;
+  padding-left: 80px;
+  font-size: 25px;
+}
+
+li:hover{
+  animation: spin-animation 2.5s linear infinite;
+}
+
+img{
+  max-width: 32.9%;
+  height: auto;
+  object-fit: contain;
+  border: 5px solid transparent;
+  animation: border-animation 6s ease infinite;
+}
+
+img:hover {
+  cursor: pointer;
+  animation: border-animation 6s ease infinite, hover-animation .4s linear infinite;
+}
+
+@keyframes border-animation {
+  0% {
+    border-image: linear-gradient(to right, aqua, gold, aqua);
+    border-image-slice: 1;
+  }
+
+  50%{
+    border-image: linear-gradient(to right, green, aqua, green);
+    border-image-slice: 1;
+  }
+
+  100% {
+    border-image: linear-gradient(to right, aqua, gold, aqua);
+    border-image-slice: 1;
+  }
+}
+
+@keyframes hover-animation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  25% {
+    transform: rotate(-.7deg);
+  }
+
+  50%{
+    transform: rotate(0deg);
+  }
+
+  75% {
+    transform: rotate(.7deg);
+  }
+
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes spin-animation {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50%{
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+section {
+display: flex;
+justify-content: center;
+padding: 10px;
+}
+
+footer{
+  position: fixed;
+  bottom: 0;
+  margin: 8px;
+}
+
+body{
+  background-color: bisque;
+}
